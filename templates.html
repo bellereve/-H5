@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>常用模板</title>
+
+<style>
+body{
+  font-family:-apple-system,BlinkMacSystemFont;
+  background:#f5f6fa;
+  margin:0;
+  padding:20px;
+  padding-bottom:70px;
+}
+
+.header{
+  background:linear-gradient(135deg,#7CB342,#558B2F);
+  color:white;
+  padding:20px;
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+  margin:-20px -20px 20px -20px;
+}
+
+.back{
+  position:fixed;
+  top:20px;
+  left:20px;
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.template-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.template-item{
+  background:white;
+  border-radius:12px;
+  padding:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.template-item:active{
+  transform:scale(0.98);
+}
+
+.template-icon{
+  font-size:28px;
+}
+
+.template-info{
+  flex:1;
+}
+
+.template-title{
+  font-size:15px;
+  font-weight:600;
+  color:#333;
+  margin-bottom:2px;
+}
+
+.template-desc{
+  font-size:12px;
+  color:#999;
+}
+
+.footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -2px 6px rgba(0,0,0,0.1);
+  font-size:14px;
+}
+
+.footer div{
+  color:#666;
+  cursor:pointer;
+}
+
+.footer div.active{
+  color:#7CB342;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <span class="back" onclick="window.location.href='index.html'">← 返回</span>
+  📄 常用模板
+</div>
+
+<div class="template-list">
+  <div class="template-item" onclick="useTemplate('租房')">
+    <div class="template-icon">🏠</div>
+    <div class="template-info">
+      <div class="template-title">租房合同附件</div>
+      <div class="template-desc">房东要求添加的附件说明</div>
+    </div>
+  </div>
+
+  <div class="template-item" onclick="useTemplate('请假')">
+    <div class="template-icon">🏖️</div>
+    <div class="template-info">
+      <div class="template-title">请假条模板</div>
+      <div class="template-desc">法语请假信通用模板</div>
+    </div>
+  </div>
+
+  <div class="template-item" onclick="useTemplate('介绍信')">
+    <div class="template-icon">✉️</div>
+    <div class="template-info">
+      <div class="template-title">自我介绍信</div>
+      <div class="template-desc">给学校/老师的介绍信</div>
+    </div>
+  </div>
+
+  <div class="template-item" onclick="useTemplate('投诉')">
+    <div class="template-icon">📝</div>
+    <div class="template-info">
+      <div class="template-title">行政投诉信</div>
+      <div class="template-desc">对政府部门的正式投诉</div>
+    </div>
+  </div>
+
+  <div class="template-item" onclick="useTemplate('授权')">
+    <div class="template-icon">📜</div>
+    <div class="template-info">
+      <div class="template-title">委托授权书</div>
+      <div class="template-desc">代办理事务授权模板</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div onclick="window.location.href='index.html'">首页</div>
+  <div onclick="window.location.href='translate.html'">工具</div>
+  <div onclick="window.location.href='family.html'">家庭</div>
+  <div>我的</div>
+</div>
+
+<script>
+function useTemplate(type){
+  alert("模板功能开发中，敬请期待！");
+}
+</script>
+
+</body>
+</html>

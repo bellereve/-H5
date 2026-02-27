@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家庭数字中心</title>
+
+<style>
+body{
+  font-family:-apple-system,BlinkMacSystemFont;
+  background:#f5f6fa;
+  margin:0;
+  padding:20px;
+  padding-bottom:70px;
+}
+
+.header{
+  background:linear-gradient(135deg,#7CB342,#558B2F);
+  color:white;
+  padding:20px;
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+  margin:-20px -20px 20px -20px;
+}
+
+.back{
+  position:fixed;
+  top:20px;
+  left:20px;
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  text-align:center;
+  cursor:pointer;
+}
+
+.card:active{
+  transform:scale(0.98);
+}
+
+.icon{
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+.title{
+  font-size:15px;
+  font-weight:600;
+  color:#333;
+  margin-bottom:4px;
+}
+
+.desc{
+  font-size:12px;
+  color:#999;
+}
+
+.footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -2px 6px rgba(0,0,0,0.1);
+  font-size:14px;
+}
+
+.footer div{
+  color:#666;
+  cursor:pointer;
+}
+
+.footer div.active{
+  color:#7CB342;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <span class="back" onclick="window.location.href='index.html'">← 返回</span>
+  🏠 家庭数字中心
+</div>
+
+<div class="grid">
+  <div class="card" onclick="openPage('family.html?tab=档案')">
+    <div class="icon">📁</div>
+    <div class="title">家庭档案</div>
+    <div class="desc">重要文件存档</div>
+  </div>
+
+  <div class="card" onclick="openPage('family.html?tab=提醒')">
+    <div class="icon">⏰</div>
+    <div class="title">提醒设置</div>
+    <div class="desc">重要日期提醒</div>
+  </div>
+
+  <div class="card" onclick="openPage('family.html?tab=医疗')">
+    <div class="icon">💊</div>
+    <div class="title">医疗记录</div>
+    <div class="desc">健康档案管理</div>
+  </div>
+
+  <div class="card" onclick="openPage('family.html?tab=学校')">
+    <div class="icon">📚</div>
+    <div class="title">学校日程</div>
+    <div class="desc">孩子学习安排</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div onclick="window.location.href='index.html'">首页</div>
+  <div onclick="window.location.href='translate.html'">工具</div>
+  <div class="active" onclick="window.location.href='family.html'">家庭</div>
+  <div>我的</div>
+</div>
+
+<script>
+function openPage(page){
+  window.location.href = page;
+}
+</script>
+
+</body>
+</html>

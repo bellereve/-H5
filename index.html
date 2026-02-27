@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>二宝 · 法国华人生活服务平台</title>
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont;
+  background:#f5f6fa;
+}
+
+.header{
+  background:linear-gradient(135deg,#7CB342,#558B2F);
+  color:white;
+  padding:30px 20px;
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.subtitle{
+  font-size:14px;
+  margin-top:8px;
+  opacity:0.9;
+}
+
+.container{
+  padding:20px;
+  padding-bottom:70px;
+}
+
+.main-card{
+  background:white;
+  border-radius:20px;
+  padding:25px;
+  margin-bottom:20px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.1);
+  text-align:center;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  text-align:center;
+  font-size:15px;
+  font-weight:500;
+  cursor:pointer;
+}
+
+.icon{
+  font-size:26px;
+  margin-bottom:8px;
+}
+
+.footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -2px 6px rgba(0,0,0,0.1);
+  font-size:14px;
+}
+
+.footer div{
+  color:#666;
+  cursor:pointer;
+}
+
+.footer div.active{
+  color:#7CB342;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  二宝 · 法国华人生活服务平台
+  <div class="subtitle">翻译 · 行政 · 家庭 · 医疗 · 模板</div>
+</div>
+
+<div class="container">
+
+  <!-- 主入口 -->
+  <div class="main-card" onclick="openPage('translate.html')">
+    🌍 法语翻译（立即使用）
+  </div>
+
+  <!-- 功能网格 -->
+  <div class="grid">
+    <div class="card" onclick="openPage('gov.html')">
+      <div class="icon">🏛</div>
+      行政服务
+    </div>
+
+    <div class="card" onclick="openPage('family.html')">
+      <div class="icon">🏠</div>
+      家庭数字中心
+    </div>
+
+    <div class="card" onclick="openPage('templates.html')">
+      <div class="icon">📄</div>
+      常用模板
+    </div>
+
+    <div class="card" onclick="openPage('medical.html')">
+      <div class="icon">🏥</div>
+      医疗协助
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="active" onclick="openPage('index.html')">首页</div>
+  <div onclick="openPage('translate.html')">工具</div>
+  <div onclick="openPage('family.html')">家庭</div>
+  <div>我的</div>
+</div>
+
+<script>
+function openPage(page){
+  window.location.href = page;
+}
+</script>
+
+</body>
+</html>

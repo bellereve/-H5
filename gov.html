@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>行政服务</title>
+
+<style>
+body{
+  font-family:-apple-system,BlinkMacSystemFont;
+  background:#f5f6fa;
+  margin:0;
+  padding:20px;
+  padding-bottom:70px;
+}
+
+.header{
+  background:linear-gradient(135deg,#7CB342,#558B2F);
+  color:white;
+  padding:20px;
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+  margin:-20px -20px 20px -20px;
+}
+
+.back{
+  position:fixed;
+  top:20px;
+  left:20px;
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+}
+
+textarea{
+  width:100%;
+  height:100px;
+  border-radius:12px;
+  padding:12px;
+  border:none;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  font-size:16px;
+  font-family:-apple-system,BlinkMacSystemFont;
+}
+
+button{
+  margin-top:10px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#7CB342,#558B2F);
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.result{
+  margin-top:20px;
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  min-height:60px;
+  white-space:pre-wrap;
+  line-height:1.6;
+}
+
+.loading{
+  color:#999;
+  text-align:center;
+}
+
+.service-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.service-item{
+  background:white;
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
+  cursor:pointer;
+}
+
+.service-item:active{
+  transform:scale(0.98);
+}
+
+.service-item .icon{
+  font-size:24px;
+  margin-bottom:5px;
+}
+
+.service-item .label{
+  font-size:13px;
+  color:#666;
+}
+
+.footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -2px 6px rgba(0,0,0,0.1);
+  font-size:14px;
+}
+
+.footer div{
+  color:#666;
+  cursor:pointer;
+}
+
+.footer div.active{
+  color:#7CB342;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <span class="back" onclick="window.location.href='index.html'">← 返回</span>
+  🏛 行政服务
+</div>
+
+<div class="service-list">
+  <div class="service-item" onclick="setService('CAF')">
+    <div class="icon">🏠</div>
+    <div class="label">CAF 家庭补助</div>
+  </div>
+  <div class="service-item" onclick="setService('税务')">
+    <div class="icon">💰</div>
+    <div class="label">税务申报</div>
+  </div>
+  <div class="service-item" onclick="setService('居留')">
+    <div class="icon">🪪</div>
+    <div class="label">居留签证</div>
+  </div>
+  <div class="service-item" onclick="setService('CPAM')">
+    <div class="icon">🏥</div>
+    <div class="label">医疗保险</div>
+  </div>
+  <div class="service-item" onclick="setService('学校')">
+    <div class="icon">🏫</div>
+    <div class="label">学校注册</div>
+  </div>
+  <div class="service-item" onclick="setService('Prefecture')">
+    <div class="icon">🏢</div>
+    <div class="label">Prefecture</div>
+  </div>
+</div>
+
+<textarea id="input" placeholder="请描述您的具体问题..."></textarea>
+<button onclick="ask()">咨询</button>
+
+<div class="result" id="result"></div>
+
+<div class="footer">
+  <div onclick="window.location.href='index.html'">首页</div>
+  <div onclick="window.location.href='translate.html'">工具</div>
+  <div onclick="window.location.href='family.html'">家庭</div>
+  <div>我的</div>
+</div>
+
+<script>
+let currentService = '';
+
+function setService(service){
+  currentService = service;
+  document.getElementById("input").placeholder = "正在咨询：" + service + "相关问题，请描述具体情况...";
+  document.getElementById("input").focus();
+}
+
+async function ask(){
+  const text = document.getElementById("input").value;
+
+  if(!text.trim()){
+    alert("请输入问题");
+    return;
+  }
+
+  const serviceType = currentService || "通用";
+  document.getElementById("result").innerHTML = '<div class="loading">正在咨询...</div>';
+
+  try{
+    const res = await fetch("/api/gov",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({text, type:serviceType})
+    });
+
+    const data = await res.json();
+    document.getElementById("result").innerText = data.result || "无结果";
+  }catch(e){
+    document.getElementById("result").innerText = "接口错误：" + e.message;
+  }
+}
+</script>
+
+</body>
+</html>
